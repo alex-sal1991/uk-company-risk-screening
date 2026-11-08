@@ -3,6 +3,7 @@ import time
 import json
 import os
 from dotenv import load_dotenv
+from pathlib import Path
 
 BASE_URL = "https://api.company-information.service.gov.uk"
 
@@ -85,6 +86,3 @@ def main(limit=None):
 
 if __name__ == "__main__":
     main()      # test first. Change to main() for the full run
-            
-
-    
