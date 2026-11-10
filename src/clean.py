@@ -52,6 +52,7 @@ def build_officers_df(officer_folder):
         for item in officer_.get("items", []):
                 row = {
                             "officer_id": item.get("links", {}).get("officer", {}).get("appointments").split("/")[2],
+                            "appointment_id": item.get("links", {}).get("self", "").split("/")[-1],
                             "company_number": officer.stem,
                             "officer_name": item.get("name"),
                             "officer_dob_month": item.get("date_of_birth", {}).get("month"),
@@ -116,8 +117,7 @@ def dataframe_validation(df, df_name):
         key = ["company_number", "officer_id", "officer_role"]
         print(df["officer_role"].value_counts())
         print(f"Unique {df_name}:", df["officer_id"].nunique())
-        print(f"Number of duplicated {df_name} :", df.duplicated(subset=["company_number", "officer_id", "officer_role", "appointed_on"]).sum())
-        print(df[df.duplicated(subset=key, keep=False)].sort_values(key))
+        print(f"Number of duplicated {df_name} :", df.duplicated(subset=["company_number", "officer_id", "appointment_id", "officer_role", "appointed_on"]).sum())
         df.info()
 
     if df_name == "PSC":
