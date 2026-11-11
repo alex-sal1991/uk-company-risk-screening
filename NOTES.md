@@ -22,7 +22,7 @@ companies  (1 row per company)    key: company_number
 - jurisdiction
 - sic_codes
 
-officers   (1 row per company–officer appointment)    key: company_number + officer_id + officer_role
+officers   (1 row per company–officer appointment)    key: appointment_id
 - officer_id
 - officer_name
 - officer_dob_month
